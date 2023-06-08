@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="ajax.js"></script>
+    <title>Gaiola Games</title>
+  <style>
+   * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    padding-right: 11px;
+    background-color: #1a1818;
+    
+}
+
+.logo img {
+    width: 200px;
+    cursor: pointer;
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    background-color:#242323;
+}
+
+.search-bar button {
+    padding: 10px 10px;
+    background-color: indigo;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+button:hover {
+     background-color: rgb(140, 30, 218);
+}
+
+.user-data
+{
+    display: flex;
+    align-items: center;
+}
+
+
+
+nav {
+    background-color: #242323;
+    color: #fff;
+    padding: 8px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin-right: 23px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    
+}
+nav ul li a:hover{
+    color:  rgb(140, 30, 218);
+}
+
+
+body{
+    background-color:#181818;
+    
+}
+footer {
+    background-color: #1e1e1e;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    margin-top: 10px;
+}
+
+
+     /* botao cadastrar e outro */
+     .pageButton1{
+    background-color: indigo;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-right: 1px;
+            
+           
+        }
+.pageButton2{
+    background-color: indigo;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-right: 2px;
+            margin-left: 1px;
+            
+        }
+
+
+        /* Estilos para a janela */
+        .janela {
+            display: none; /* A janela é ocultada */
+            position: fixed; /* Posição fixa para ficar em cima da página principal */
+            z-index: 1; /* Z-index maior para ficar acima dos outros elementos */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Adiciona rolagem se o conteúdo for maior que a janela */
+            background-color: rgba(0, 0, 0, 0.4); /* Cor de fundo semi-transparente */
+        }
+
+        /* Estilos para o conteúdo da janela cadastrar */
+        .janela-content {
+            background-color: #181818;
+            color: white;
+            margin: 5% auto; /* Centraliza verticalmente */
+            padding: 3% 4% 2%;
+            border: 3px solid white;
+            width: fit-content;
+           /* max-width: 100000px;*/
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+                /* Posicionar o ícone "X" à direita e acima */
+            position: relative;
+           
+        }
+
+          /* Aumentar o tamanho do campo de entrada e a fonte */
+          .janela-content input[type="text"],
+        .janela-content input[type="email"],
+        .janela-content input[type="number"],
+        .janela-content input[type="password"],
+        .janela-content input[type="tel"],
+        .janela-content input[type="date"] {
+            width: 400px;
+            padding: 5px;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+       
+            
+            label {
+                font-size: 18px; /* Ajuste o tamanho da fonte conforme necessário */
+              
+        }
+
+        /* Centralizar e configurar o botão de envio */
+        .botaoform{
+            display: block;
+            margin: 15px auto 0;
+             /* width: 200px; Ajuste a largura conforme necessário */
+           /*    height: 50px; Ajuste a altura conforme necessário */
+            font-size: 30px; /* Ajuste o tamanho da fonte conforme necessário */
+            background-color: indigo;
+            color: white;
+            padding: 10px 50px;
+            border: none;
+            border-radius: 3px;
+         
+        }
+        .botaoform:hover {
+        background-color: rgb(140, 30, 218);
+        }
+        /* Estilos para o botão de fechar cadastrar */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            width: 20px;
+             /* Posicionar o ícone "X" à direita e acima */
+            position: absolute;
+             top: 10px;
+            right: 10px;
+        }
+
+        .botao:hover {
+        background-color: rgb(140, 30, 218);
+        }
+        /* Estilos para o botão de fechar cadastrar */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            width: 20px;
+             /* Posicionar o ícone "X" à direita e acima */
+            position: absolute;
+             top: 10px;
+            right: 10px;
+        }
+
+        /* Centralizar o título Cadastro */
+         .janela-content h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 40px; /* Ajuste o tamanho da fonte conforme necessário */
+        }
+        .close:hover,
+        .close:focus {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /*Define a cor dos inputs*/
+        input{
+            background-color: #1e1e1e;
+            color: rgba(255, 255, 255, 0.51);        }
+
+       
+        ::placeholder{
+            color: rgba(255, 255, 255, 0.51);
+        }
+
+.pageButton3{
+    position: absolute;
+             top: 10px;
+            right: 10px;
+            background-color: indigo;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 2px 2px;
+           
+}
+
+.ola{
+
+    color: white;
+    margin-right: 8px;
+    margin-top: 13px;
+    font-weight: normal;
+}
+  </style>
+</head>
+<body>
+
+<header>
+        <div class="logo">
+            <a href="carrosel.html"><img src="images/logo-gaiola-games_1.png" alt="Logo da Loja"></a><!--tem que mudar o nome da pagina para funcionar-->
+        </div>
+        <div class="search-bar">
+            <input id ="barraPesquisa" type="text"  placeholder="Pesquisar...">
+            <button  onclick="barraDePesquisa()">Pesquisar</button>
+        </div>
+
+
+        <div class="user-data" id="user-data" style="display: block;">
+            <button class = "pageButton1" id="login-btn" onclick="openFormMenu()">Login</button>
+            <button class = "pageButton2" id="signup-btn" onclick="openForm()">Cadastrar</button>
+        </div>
+
+        <div class="admin" id="admin" style="display: none;">
+           <a  href="lista.html" style="text-decoration: none;"><h3 class="ola" >Olá, admin</h3></a> 
+            <button class = "pageButton3" id="sair" onclick="sair()">Sair</button>
+        </div>
+
+        <div class="usuario" id="usuario" style="display: none;">
+           <h3 class="ola">Olá, Gustavo</h3>
+             <button class = "pageButton3" id="sair" onclick="sair()">Sair</button>
+         </div>
+
+</header>
+    
+    <nav>
+        <ul>
+            <li><a href="nintendo.html">Nintendo</a></li><!--tem que colocar os catalogos no href-->
+            <li><a href="xbox.html">Xbox</a></li>
+            <li><a href="play.html">PlayStation</a></li>
+            <li><a href="pc.html">Steam</a></li>
+        </ul>
+    </nav>
+
+<main id="conteudo">
+
+
+</main>
+
+
+    <footer>
+        <p>&copy;Gaiola Games é uma loja ficticia criada para um trabalho da FATEC</p>
+        <p style="font-size: 13px; margin-top: 2px;">CNPJ: 00.00.000/0001-90 | Rua João da Silva - SP | Tel: 4002-8922</p>
+    </footer>
+    
+
+   
+    <!-- A janela cadastro -->
+    <div id="minhajanela" class="janela">
+        
+        <!-- Conteúdo da janela -->
+
+        <div class="janela-content">
+            <span class="close" onclick="closeForm()">&times;</span> <!-- Botão para fechar a janela -->
+            <h1>Cadastrar</h1>
+            
+            <form>
+                
+                <!-- Adicione os campos do formulário aqui -->
+                <label for="nome">Nome:</label><br>
+                <input type="text" id="nome" name="nome" required><br><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" placeholder="exemplo.123@email.com" id="email" name="email" required><br><br>
+
+                <label for="cpf">CPF:</label><br>
+                <input type="number" maxlength="15" placeholder="123.456.789-12" id="cpf" name="senha" required><br><br>
+
+                <label for="senha">Senha:</label><br>
+                <input type="password" placeholder="********" id="senha" name="senha" required><br><br>
+
+                <label for="telefone">Telefone/Celular:</label><br>
+                <input type="tel" maxlength="9" placeholder="(__)9____-____" id="tel" name="tel" required><br><br>
+
+                <label for="data">Data de nascimento:</label><br>
+                <input type="date" id="data" name="data"> <br><br>
+
+                <label for="endereço">Endereço:</label><br>
+                <input type="text" id="endereço" name="endereço" required><br><br> 
+
+                <label for="cep">CEP:</label><br>
+                <input type="number" maxlength="10" placeholder="12345-678" id="cep" name="cep"><br><br>
+
+
+                <input type="submit" value="Enviar" class="botaoform">
+            </form>
+
+        </div>
+    </div>
+
+     <!-- A janela menu -->
+     <div id="minhajanelamenu" class="janela">
+        
+        <!-- Conteúdo da janela -->
+
+        <div class="janela-content">
+            <span class="close" onclick="closeFormMenu()">&times;</span> <!-- Botão para fechar a janela -->
+            <h1>Login</h1>
+            
+            <form>
+                
+                <!-- Adicione os campos do formulário aqui -->
+
+                <label for="emailuser">Email:</label><br>
+                <input type="email"  id="emailuser" name="emailuser" required><br><br>
+
+                <label for="senhauser">Senha:</label><br>
+                <input type="password"  id="senhauser" name="senhauser" required><br><br>
+
+
+                <input type="submit" value="Entrar" class="botaoform" onclick="login(event);">
+            </form>
+
+        </div>
+    </div>
+
+    
+
+    <script>
+
+
+function sair() {
+    document.getElementById("admin").style.display = "none";
+    document.getElementById("usuario").style.display = "none";
+    document.getElementById("user-data").style.display = "block";
+    // Carregar página carrosel.html via Ajax
+    $.ajax({
+      url: "carrosel.html",
+      success: function(response) {
+        $("#conteudo").html(response);
+      }
+    });
+    
+}
+
+function login(event) {
+    event.preventDefault(); // Cancelar o evento de envio padrão
+   
+
+    let email = document.getElementById("emailuser").value;
+    let senha = document.getElementById("senhauser").value;
+
+ 
+    if(email=="admin@gmail.com"&&senha=="admin"){
+    document.getElementById("admin").style.display = "block";
+    document.getElementById("usuario").style.display = "none";
+    document.getElementById("user-data").style.display = "none";
+    document.getElementById("minhajanelamenu").style.display = "none";
+    document.getElementById("emailuser").value = "";
+    document.getElementById("senhauser").value = "";
+
+     // Carregar página lista.html via Ajax
+     $.ajax({
+      url: "lista.html",
+      success: function(response) {
+        $("#conteudo").html(response);
+      }
+    });
+
+    }
+    else if(email=="gustavo@gmail.com"&&senha=="123"){
+    document.getElementById("admin").style.display = "none";
+    document.getElementById("usuario").style.display = "block";
+    document.getElementById("user-data").style.display = "none";
+    document.getElementById("minhajanelamenu").style.display = "none";
+    document.getElementById("emailuser").value = "";
+    document.getElementById("senhauser").value = "";
+    // Carregar página carrosel.html via Ajax
+    $.ajax({
+      url: "carrosel.html",
+      success: function(response) {
+        $("#conteudo").html(response);
+      }
+    });
+
+    }
+    else{
+        alert("senha ou usuario invalido!")
+    }
+    
+   
+}
+
+
+
+
+   // Função para abrir a janela
+   function openForm() {
+            document.getElementById("minhajanela").style.display = "block";
+        }
+
+        // Função para fechar a janela
+        function closeForm() {
+            document.getElementById("minhajanela").style.display = "none";
+        }
+
+        // função abri formulario do menu
+
+          // Função para abrir a janela
+   function openFormMenu() {
+            document.getElementById("minhajanelamenu").style.display = "block";
+        }
+
+        // Função para fechar a janela
+        function closeFormMenu() {
+            document.getElementById("minhajanelamenu").style.display = "none";
+        }
+
+
+    </script>
+</body>
+</html>

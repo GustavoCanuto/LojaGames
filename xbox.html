@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Jogos</title>
+    <link rel="stylesheet" href="estiloCatalogo.css">
+</head>
+<body>
+    <section class="content">
+        <div class="mostrador" id="mostrador">
+            <div class="fila">
+                <div class="item" onclick="carregar(this)">
+                    <div class="foto">
+                        <img src="images/banco-de-imagens/For-Honor-Limited-Edition.jpg" alt="">
+                        <p class="descricao"> For Honor Limited Edition</p>
+                        <span class="preço">$204,28</span>
+                        <p>Qtd: 15 unidades</p>
+                        
+                    </div>
+                </div>
+                <div class="item" onclick="carregar(this)">
+                    <div class="foto">
+                        <img src="images/banco-de-imagens/Gotham-Knights-BR-Standard-Edition.jpg" alt="">
+                        <p class="descricao"> Gotham Knights BR - Standard Edition</p>
+                        <span class="preço">$79,19</span>
+                        <p>Qtd: 15 unidades</p>
+                    </div>
+                </div>
+                <div class="item" onclick="carregar(this)">
+                    <div class="foto">
+                        <img src="images/banco-de-imagens/xboxCreed.jpg" alt="">
+                        <p class="descricao">Assassins Creed Origins</p>
+                        <span class="preço">$116,98</span>
+                        <p>Qtd: 15 unidades</p>
+                    </div>
+                </div>
+            </div>
+            <div class="fila">
+                <div class="item" onclick="carregar(this)">
+                    <div class="foto">
+                        <img src="images/banco-de-imagens/xboxRedDead.jpg" alt="">
+                        <p class="descricao">Red Dead Redemption Special Edition</p>
+                        <span class="preço">$123,22</span>
+                        <p>Qtd: 15 unidades</p>
+                    </div>
+                </div>
+                <div class="item" onclick="carregar(this)">
+                    <div class="foto">
+                        <img src="images/banco-de-imagens/OUTLAST-TRINITY.jpg" alt="">
+                        <p class="descricao">OutLast Trinity</p>
+                        <span class="preço">$150,28</span>
+                        <p>Qtd: 15 unidades</p>
+                    </div>
+                </div>
+                <div class="item" onclick="carregar(this)">
+                    <div class="foto">
+                        <img src="images/banco-de-imagens/JUST-DANCE-2017.jpg" alt="">
+                        <p class="descricao">Just Dance 2017</p>
+                        <span class="preço">$188,97</span>
+                        <p>Qtd: 15 unidades</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="selecao" id="selecao">
+            <div class="fechar" onclick="fechar()">
+               <p style="font-size: large; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin-right: 10px;">X</p> 
+            </div>
+            <div class="info">
+                <img src="" alt="" id="img">
+                <h2 id="jogo"></h2> 
+                
+                <span class="preço" id="preço"></span>
+                </div>
+                <button class ="botao">Comprar</button>
+            </div>
+    </section>
+    <script>
+let mostrador = document.getElementById("mostrador");
+let selecao = document.getElementById("selecao");
+let imgSelecionada = document.getElementById("img");
+let itemSelecionado = document.getElementById("jogo");
+let descriSelecionada = document.getElementsByClassName("descricao");
+let precoSelecionado = document.getElementById("preço");
+
+function carregar(objeto) {
+      fecharBordes();
+  mostrador.style.width = "60%";
+  selecao.style.width = "40%";
+  selecao.style.opacity = "1";
+  objeto.style.border = "2px solid coral";
+
+  imgSelecionada.src = objeto.getElementsByTagName("img")[0].src; 
+
+  itemSelecionado.innerHTML = objeto.getElementsByTagName("p")[0].innerHTML; 
+
+  precoSelecionado.innerHTML = objeto.getElementsByTagName("span")[0].innerHTML; 
+} 
+function fecharBordes(){
+    var items = document.getElementsByClassName("item");
+    for(i=0; i < items.length; i++){
+        items[i]. style.border = "none";
+    }
+}
+
+function fechar(){
+    mostrador.style.width = "100%";
+    selecao.style.width = "0%";
+    selecao.style.opacity = "0";
+
+}
+    </script>
+</body>
+</html>
