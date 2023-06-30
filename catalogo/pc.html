@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja de Jogos</title>
-    <link rel="stylesheet" href="estiloCatalogo.css">
+    <link rel="stylesheet" href="style/estiloCatalogo.css">
+    <script type="text/javascript" src="javascript/scriptCatalogo.js"></script>
 </head>
+
 <body>
     <section class="content">
         <div class="mostrador" id="mostrador">
             <div class="fila">
                 <div class="item" onclick="carregar(this)">
-                   
+
                     <div class="foto">
                         <img src="images/banco-de-imagens/Pc01.jpg" alt="">
                         <p class="descricao">Days Gone Steam</p>
@@ -67,52 +70,21 @@
         </div>
         <div class="selecao" id="selecao">
             <div class="fechar" onclick="fechar()">
-               <p style="font-size: large; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin-right: 10px;">X</p> 
+                <p
+                    style="font-size: large; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin-right: 10px;">
+                    X</p>
             </div>
             <div class="info">
                 <img src="images/banco-de-imagens/spider_man.jpg" alt="" id="img">
-                <h2 id="jogo"></h2> 
-                
+                <h2 id="jogo"></h2>
+
                 <span class="preço" id="preço">$215,97</span>
                 <p></p>
-                </div>
-                <button class ="botao">Comprar</button>
             </div>
+            <button class="botao">Comprar</button>
+        </div>
     </section>
-    <script>
-let mostrador = document.getElementById("mostrador");
-let selecao = document.getElementById("selecao");
-let imgSelecionada = document.getElementById("img");
-let itemSelecionado = document.getElementById("jogo");
-let descriSelecionada = document.getElementsByClassName("descricao");
-let precoSelecionado = document.getElementById("preço");
 
-function carregar(objeto) {
-      fecharBordes();
-  mostrador.style.width = "60%";
-  selecao.style.width = "40%";
-  selecao.style.opacity = "1";
-  objeto.style.border = "2px solid coral";
-
-  imgSelecionada.src = objeto.getElementsByTagName("img")[0].src; 
-
-  itemSelecionado.innerHTML = objeto.getElementsByTagName("p")[0].innerHTML; 
-
-  precoSelecionado.innerHTML = objeto.getElementsByTagName("span")[0].innerHTML; 
-} 
-function fecharBordes(){
-    var items = document.getElementsByClassName("item");
-    for(i=0; i < items.length; i++){
-        items[i]. style.border = "none";
-    }
-}
-
-function fechar(){
-    mostrador.style.width = "100%";
-    selecao.style.width = "0%";
-    selecao.style.opacity = "0";
-
-}
-    </script>
 </body>
+
 </html>

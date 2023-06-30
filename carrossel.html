@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="javascript/ajaxcarrosel.js"></script>
+    <link rel="stylesheet" href="style/estilocarrossel.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="content">
+        <div class="carousel-container">
+            <div class="image-carousel">
+
+                <a href="catalogo/pc.html" class="carrossel-link"><img class="carousel-image" src="images/steam.png"
+                        alt="Imagem 4"></a>
+                <a href="catalogo/play.html" class="carrossel-link"><img class="carousel-image"
+                        src="images/playstation.png" alt="Imagem 3"></a>
+                <a href="catalogo/xbox.html" class="carrossel-link"><img class="carousel-image" src="images/xbox.png"
+                        alt="Imagem 2"></a>
+                <a href="catalogo/nintendo.html" class="carrossel-link"><img class="carousel-image"
+                        src="images/nintendo.png" alt="Imagem 1"></a>
+
+            </div>
+            <div class="carousel-buttons">
+                <button class="Back" onclick="showPreviousImage()">←</button>
+                <button class="Front" onclick="showNextImage()">→</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentImageIndex = 3;
+        const carouselImages = document.querySelectorAll('.carousel-image');
+        carouselImages[currentImageIndex].classList.add('active');
+        const totalImages = carouselImages.length;
+        let i = 0;
+        while (i < currentImageIndex - 1) {
+            carouselImages[i].style.display = "none";
+            i++;
+        }
+        function showNextImage() {
+            carouselImages[(currentImageIndex - 1 + totalImages) % totalImages].style.display = "block"; // libera proximo 
+            //transição
+            setTimeout(function () {
+                carouselImages[currentImageIndex].classList.remove('active');
+
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;//2
+                carouselImages[currentImageIndex].classList.add('active');
+            }, 20); // Aguarda 400ms antes de executar o código dentro da função setTimeout
+            //apaga anterior e liberar proximo
+            // carouselImages[(currentImageIndex - 1 + totalImages) % totalImages].style.display = "block"; // libera proximo
+            setTimeout(function () {
+                carouselImages[(currentImageIndex + 1 + totalImages) % totalImages].style.display = "none"; // apaga anterior 
+            }, 200); // Aguarda 400ms antes de executar o código dentro da função setTimeout 
+            // alert(currentImageIndex);
+        }
+
+        function showPreviousImage() {
+
+            carouselImages[(currentImageIndex + 1 + totalImages) % totalImages].style.display = "block"; //libera
+
+            carouselImages[(currentImageIndex - 1 + totalImages + totalImages) % totalImages].style.display = "none"; //apaga
+
+            setTimeout(function () {
+                carouselImages[currentImageIndex].classList.remove('active');
+                currentImageIndex = (currentImageIndex + 1 + totalImages) % totalImages;
+
+                carouselImages[currentImageIndex].classList.add('active');
+            }, 20); // Aguarda 400ms antes de executar o código dentro da função setTimeout
+
+            setTimeout(function () {
+                carouselImages[(currentImageIndex - 1 + totalImages + totalImages) % totalImages].style.display = "none"; //apaga
+            }, 200); // Aguarda 400ms antes de executar o código dentro da função setTimeout
+
+
+        }
+        setInterval(showNextImage, 3000);
+
+
+    </script>
+</body>
+
+</html>

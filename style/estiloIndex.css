@@ -1,0 +1,270 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    padding-right: 11px;
+    background-color: #1a1818;
+
+}
+
+.logo img {
+    width: 200px;
+    cursor: pointer;
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    background-color: #242323;
+}
+
+.search-bar button {
+    padding: 10px 10px;
+    background-color: indigo;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(140, 30, 218);
+}
+
+.user-data {
+    display: flex;
+    align-items: center;
+}
+
+
+
+nav {
+    background-color: #242323;
+    color: #fff;
+    padding: 8px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin-right: 23px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+
+nav ul li a:hover {
+    color: rgb(140, 30, 218);
+}
+
+
+body {
+    background-color: #181818;
+
+}
+
+footer {
+    background-color: #1e1e1e;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    margin-top: 10px;
+}
+
+
+/* botao cadastrar e outro */
+.pageButton1 {
+    background-color: indigo;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-right: 1px;
+
+
+}
+
+.pageButton2 {
+    background-color: indigo;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-right: 2px;
+    margin-left: 1px;
+
+}
+
+
+/* Estilos para a janela */
+.janela {
+    display: none;
+    /* A janela é ocultada */
+    position: fixed;
+    /* Posição fixa para ficar em cima da página principal */
+    z-index: 1;
+    /* Z-index maior para ficar acima dos outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    /* Adiciona rolagem se o conteúdo for maior que a janela */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Cor de fundo semi-transparente */
+}
+
+/* Estilos para o conteúdo da janela cadastrar */
+.janela-content {
+    background-color: #181818;
+    color: white;
+    margin: 5% auto;
+    /* Centraliza verticalmente */
+    padding: 3% 4% 2%;
+    border: 3px solid white;
+    width: fit-content;
+    /* max-width: 100000px;*/
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    /* Posicionar o ícone "X" à direita e acima */
+    position: relative;
+
+}
+
+/* Aumentar o tamanho do campo de entrada e a fonte */
+.janela-content input[type="text"],
+.janela-content input[type="email"],
+.janela-content input[type="number"],
+.janela-content input[type="password"],
+.janela-content input[type="tel"],
+.janela-content input[type="date"] {
+    width: 400px;
+    padding: 5px;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+
+
+label {
+    font-size: 18px;
+    /* Ajuste o tamanho da fonte conforme necessário */
+
+}
+
+/* Centralizar e configurar o botão de envio */
+.botaoform {
+    display: block;
+    margin: 15px auto 0;
+    /* width: 200px; Ajuste a largura conforme necessário */
+    /*    height: 50px; Ajuste a altura conforme necessário */
+    font-size: 30px;
+    /* Ajuste o tamanho da fonte conforme necessário */
+    background-color: indigo;
+    color: white;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 3px;
+
+}
+
+.botaoform:hover {
+    background-color: rgb(140, 30, 218);
+}
+
+/* Estilos para o botão de fechar cadastrar */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    width: 20px;
+    /* Posicionar o ícone "X" à direita e acima */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.botao:hover {
+    background-color: rgb(140, 30, 218);
+}
+
+/* Estilos para o botão de fechar cadastrar */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    width: 20px;
+    /* Posicionar o ícone "X" à direita e acima */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Centralizar o título Cadastro */
+.janela-content h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 40px;
+    /* Ajuste o tamanho da fonte conforme necessário */
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*Define a cor dos inputs*/
+input {
+    background-color: #1e1e1e;
+    color: rgba(255, 255, 255, 0.51);
+}
+
+
+::placeholder {
+    color: rgba(255, 255, 255, 0.51);
+}
+
+.pageButton3 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: indigo;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 2px 2px;
+
+}
+
+.ola {
+
+    color: white;
+    margin-right: 8px;
+    margin-top: 13px;
+    font-weight: normal;
+}
